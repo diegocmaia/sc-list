@@ -1,0 +1,28 @@
+{
+    "name": "sctr-list",
+    "version": "1.0.0",
+    "author": "Diego Maia",
+    "scripts": {
+        "start": "NODE_ENV=development react-scripts start"
+    },
+    "dependencies": {
+        "isomorphic-fetch": "^2.2.1",
+        "react": "^16.5.2",
+        "react-dom": "^16.5.2",
+        "react-google-maps": "^9.4.5",
+        "react-redux": "^5.0.7",
+        "redux": "^4.0.1",
+        "redux-promise-middleware": "^5.1.1",
+        "redux-thunk": "^2.3.0",
+        "styled-components": "^3.4.10"
+    },
+    "devDependencies": {
+        "react-scripts": "^2.0.4"
+    },
+    "browserslist": [
+        ">0.2%",
+        "not dead",
+        "not ie <= 11",
+        "not op_mini all"
+    ]
+}
