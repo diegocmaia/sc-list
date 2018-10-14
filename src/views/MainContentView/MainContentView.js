@@ -5,6 +5,7 @@ import List from '../../components/List'
 import ItemsMap from '../../components/ItemsMap'
 import InputFilter from '../../components/InputFilter'
 import InputRadio from '../../components/InputRadio'
+import LoadingModal from '../../components/LoadingModal'
 
 const StyledWrapper = styled.div`
     display: flex;
@@ -30,10 +31,15 @@ export default class Header extends React.Component {
         this.state = { selectedView: 'list' }
     }
 
+    componentWillUnmount() {
+        clearInterval(this.interval)
+    }
+
     componentWillMount() {
         const { scootersActions, filter } = this.props
         // We can pass to filter to the API, but once it doesn't provides us filtering, let's do it on the frontend side
         scootersActions.getScooters({ filter })
+        this.interval = setInterval(() => scootersActions.getScooters({ filter }), 10000)
     }
 
     onFilterSubmit(filter) {
@@ -53,6 +59,7 @@ export default class Header extends React.Component {
 
         return (
             <StyledWrapper>
+                {isLoading ? <LoadingModal isLoading={isLoading} /> : null}
                 <InputFilter onChange={this.onFilterSubmit.bind(this)} />
                 <InputRadio
                     selected={selectedView}
