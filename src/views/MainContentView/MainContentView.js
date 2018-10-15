@@ -35,7 +35,7 @@ export default class Header extends React.Component {
         clearInterval(this.interval)
     }
 
-    componentWillMount() {
+    componentDidMount() {
         const { scootersActions, filter } = this.props
         // We can pass to filter to the API, but once it doesn't provides us filtering, let's do it on the frontend side
         scootersActions.getScooters({ filter })
