@@ -7,13 +7,17 @@ import InputFilter from '../../components/InputFilter'
 import InputRadio from '../../components/InputRadio'
 import LoadingModal from '../../components/LoadingModal'
 
+const StyledMainWrapper = styled.div`
+    background-color: #ffffff;
+    color: #ffffff;
+    width: 100%;
+`
+
 const StyledWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    background-color: #ffffff;
-    color: #ffffff;
 `
 
 const headers = [
@@ -58,26 +62,30 @@ export default class Header extends React.Component {
         const { selectedView } = this.state
 
         return (
-            <StyledWrapper>
+            <StyledMainWrapper>
                 {isLoading ? <LoadingModal isLoading={isLoading} /> : null}
-                <InputFilter onChange={this.onFilterSubmit.bind(this)} />
-                <InputRadio
-                    selected={selectedView}
-                    options={viewOptions}
-                    onChange={this.onSelectView.bind(this)}
-                />
-                {selectedView === 'list' ? (
-                    <List headers={headers} items={currentScooters} />
-                ) : (
-                    <ItemsMap
-                        items={currentScooters}
-                        googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-                        loadingElement={<div style={{ height: `100%` }} />}
-                        containerElement={<div style={{ height: `400px` }} />}
-                        mapElement={<div style={{ height: `100%` }} />}
-                    />
-                )}
-            </StyledWrapper>
+                {currentScooters && currentScooters.length ? (
+                    <StyledWrapper>
+                        <InputFilter onChange={this.onFilterSubmit.bind(this)} />
+                        <InputRadio
+                            selected={selectedView}
+                            options={viewOptions}
+                            onChange={this.onSelectView.bind(this)}
+                        />
+                        {selectedView === 'list' ? (
+                            <List headers={headers} items={currentScooters} />
+                        ) : (
+                            <ItemsMap
+                                items={currentScooters}
+                                googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+                                loadingElement={<div style={{ height: `100%` }} />}
+                                containerElement={<div style={{ height: `400px` }} />}
+                                mapElement={<div style={{ height: `100%` }} />}
+                            />
+                        )}
+                    </StyledWrapper>
+                ) : null}
+            </StyledMainWrapper>
         )
     }
 }
