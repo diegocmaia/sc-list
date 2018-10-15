@@ -19,7 +19,7 @@ const StyledWrapper = styled.div`
     justify-content: space-between;
     align-items: center;
 `
-
+// Hardcoded constants to make it simple
 const headers = [
     { title: 'Model' },
     { title: 'License Plate' },
