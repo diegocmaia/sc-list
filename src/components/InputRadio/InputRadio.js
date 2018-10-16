@@ -21,15 +21,16 @@ const StyleInput = styled.input`
 
 const InputRadio = ({ selected, options, onChange }) => {
     return (
-        <StyledWrapper onChange={onChange}>
+        <StyledWrapper>
             {options.length &&
                 options.map(option => (
-                    <StyleOption>
+                    <StyleOption key={option.value}>
                         <StyleInput
                             type="radio"
                             value={option.value}
                             name="scooters_view"
                             checked={option.value === selected}
+                            onChange={onChange}
                         />
                         {option.label}
                     </StyleOption>

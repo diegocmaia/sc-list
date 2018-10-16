@@ -11,11 +11,15 @@ const StyledTable = styled.table`
     border-collapse: collapse;
 `
 
+const StyledBody = styled.tbody``
+
 const List = ({ headers, items }) => {
     return (
         <StyledTable>
             <ListHeader headers={headers} />
-            {items && items.map(item => <ListItem key={item.id} item={item} />)}
+            <StyledBody>
+                {items && items.map(item => <ListItem key={item.id} item={item} />)}
+            </StyledBody>
         </StyledTable>
     )
 }
