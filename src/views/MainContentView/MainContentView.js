@@ -19,6 +19,11 @@ const StyledWrapper = styled.div`
     justify-content: space-between;
     align-items: center;
 `
+
+const StyledSpan = styled.span`
+    color: #000000;
+`
+
 // Hardcoded constants to make it simple
 const headers = [
     { title: 'Model' },
@@ -84,7 +89,11 @@ export default class Header extends React.Component {
                             />
                         )}
                     </StyledWrapper>
-                ) : null}
+                ) : (
+                    <StyledWrapper>
+                        <StyledSpan>No scooters!</StyledSpan>
+                    </StyledWrapper>
+                )}
             </StyledMainWrapper>
         )
     }
